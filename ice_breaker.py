@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # print("hello LangChain!")
     # print(os.environ['OPENAI_API_KEY'])
     print("ice breaker enter")
-    ice_break_with(name="Joris Falter")
+    ice_break_with(name="Ray Dalio")
 
 
 
