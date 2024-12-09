@@ -20,7 +20,7 @@ def lookup(name:str) -> str:
         temperature = 0,
         model_name = "gpt-4o-mini"
     )
-    template="""give the full name {name_of_person} I want you to get me a link of their linkedin profile page. your answer should only contain a URL."""
+    template="""given the full name {name_of_person} I want you to get me a link of their linkedin profile page. Your answer should be the only one specific URL. The URL should follow the standard format of https://www.linkedin.com/in/<profile-id>"""
 
     prompt_template = PromptTemplate(
         template=template, input_variables=["name_of_person"]
@@ -40,7 +40,15 @@ def lookup(name:str) -> str:
     result = agent_executor.invoke(
         input={"input": prompt_template.format_prompt(name_of_person=name)}
     )
+    print("next is the result")
+    print(result)
+    url = result['output']#.split('](')[1].strip(')')
+    print("next is the url")
+    print(url)
+
+    return url
 
 if __name__=="__main__":
     linkedin_url = lookup(name="Joris Falter")
+    print("next is the linkedin url")
     print(linkedin_url)
